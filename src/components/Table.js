@@ -118,10 +118,11 @@ function Table({ openTab, data, payoutInfo, setPayoutInfo, setOpenModal }) {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 ">
-                    {data.map((item, index) => (
-                      <tr className="bg-white my-1">
+                    {data &&data.map((item, index) => (
+                      <tr className="bg-white my-1" key={item.id}>
                         <td className="px-3 text-sm  text-center text-gray-800 whitespace-nowrap">
                           <input
+                          id={'table'+item.id}
                             type="checkbox"
                             className="text-blue-600 rounded focus:ring-blue-500"
                             value={item.id}
@@ -161,9 +162,9 @@ function Table({ openTab, data, payoutInfo, setPayoutInfo, setOpenModal }) {
                               className="w-4 h-4"
                             >
                               <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M3.75 12a.75.75 0 01.75-.75h13.19l-5.47-5.47a.75.75 0 011.06-1.06l6.75 6.75a.75.75 0 010 1.06l-6.75 6.75a.75.75 0 11-1.06-1.06l5.47-5.47H4.5a.75.75 0 01-.75-.75z"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                               />
                             </svg>
                           </button>
@@ -185,12 +186,12 @@ function Table({ openTab, data, payoutInfo, setPayoutInfo, setOpenModal }) {
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
                               viewBox="0 0 24 24"
-                              stroke-width="1.5"
+                              strokeWidth="1.5"
                               stroke="currentColor"
-                              class="w-6 h-6"
+                              className="w-6 h-6"
                             >
                               <path
-                                stroke-linecap="round"
+                                strokeLinecap="round"
                                 strokeLinejoin="round"
                                 d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                               />
@@ -208,12 +209,12 @@ function Table({ openTab, data, payoutInfo, setPayoutInfo, setOpenModal }) {
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
                               viewBox="0 0 24 24"
-                              stroke-width="1.5"
+                              strokeWidth="1.5"
                               stroke="currentColor"
-                              class="w-6 h-6"
+                              className="w-6 h-6"
                             >
                               <path
-                                stroke-linecap="round"
+                                strokeLinecap="round"
                                 strokeLinejoin="round"
                                 d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
                               />

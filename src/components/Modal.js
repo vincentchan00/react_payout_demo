@@ -3,7 +3,6 @@ function Modal({ data, openModal, setOpenModal, payoutInfo }) {
   const ref = useRef(null);
   var selectedItems = [];
 
-console.log(payoutInfo);
   const [selectedNewItems, setSelectedNewItems] = useState([]);
   const handleChange = (e) => {
     const { value, checked } = e.target;
@@ -48,7 +47,7 @@ console.log(payoutInfo);
           ref={ref}
           className="relative  top-48 mx-auto border w-full shadow-lg rounded-md bg-white md:w-1/2"
         >
-          <button className=" absolute left-3 top-3 inline-flex items-center text-blue-600 font-bold">
+          <button onClick={()=>setOpenModal(0)}className=" absolute left-3 top-3 inline-flex items-center text-blue-600 font-bold">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -65,8 +64,8 @@ console.log(payoutInfo);
             </svg>
             Back
           </button>
-          <div class="mt-3 text-center">
-            <div class="mx-auto flex text-xl items-center justify-center text-gray-400 font-bold">
+          <div className="mt-3 text-center">
+            <div className="mx-auto flex text-xl items-center justify-center text-gray-400 font-bold">
               Confirm Payouts
             </div>
             <div className="overflow-auto h-96">
@@ -92,9 +91,10 @@ console.log(payoutInfo);
 
                   <tbody className="">
                     {selectedNewItems.map((item, index) => (
-                      <tr className="border-t">
+                      <tr className="border-t" key={'selected'+item.id}>
                         <td className="py-2  text-center whitespace-nowrap text-xl">
                           <input
+                            id={'selected'+item.id}
                             type="checkbox"
                             onChange={handleChange}
                             value={item.id}
@@ -118,7 +118,7 @@ console.log(payoutInfo);
                       <td className="py-2"></td>
                       <td
                         className=" py-2 font-bold text-center whitespace-nowrap  text-xl"
-                        colspan="2"
+                        colSpan="2"
                       >
                         $
                         {selectedNewItems
@@ -142,7 +142,7 @@ console.log(payoutInfo);
                       <td className=" py-2 font-bold text-center whitespace-nowrap  text-xl">
                         $
                         {selectedNewItems
-                          .filter((item) => item.type === 2)
+                          .filter((item) => item.type === 2 && item.checked)
                           .reduce(
                             (amount, creditItem) =>
                               (amount = amount + creditItem.ready_payout),
@@ -173,10 +173,10 @@ console.log(payoutInfo);
                 </table>
               </div>
             </div>
-            <div class="items-center">
+            <div className="items-center">
               <button
                 id="ok-btn"
-                class="px-4 py-2 bg-blue-600 text-white text-base font-medium rounded-bl-md rounded-br-md w-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                className="px-4 py-2 bg-blue-600 text-white text-base font-medium rounded-bl-md rounded-br-md w-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
               >
                 Send payouts
               </button>

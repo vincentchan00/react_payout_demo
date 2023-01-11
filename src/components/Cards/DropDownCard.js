@@ -22,19 +22,19 @@ function DropDownCard({
         };
     }, [ref]);
     return (
-        <div class="group inline-block relative">
-            <button id="multiLevelDropdownButton" onClick={() => setOpenMenu(true)} data-dropdown-toggle="dropdown" class="text-white bg-blue-700  hover:bg-blue-800  rounded-sm text-xs mx-0.5 px-2 py-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">{stateText}<IoMdArrowDropdown /></button>
+        <div className="group inline-block relative">
+            <button id="multiLevelDropdownButton" onClick={() => setOpenMenu(true)} data-dropdown-toggle="dropdown" className="text-white bg-blue-700  hover:bg-blue-800  rounded-sm text-xs mx-0.5 px-2 py-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">{stateText}<IoMdArrowDropdown /></button>
             <ul ref={ref} className={`"py-1 text-sm absolute top-full text-black bg-white  dark:text-black ${openMenu ? "block" : "hidden"}`}>
                 {stateMenu.map((item, index) => (
-                    <li >
+                    <li key={item.name}>
 
-                        <button id="doubleDropdownButton" onClick={item.openModal?  ()=>setOpenModal(2):() => setOpenSubMenu(index)} className=" bg-white text-center inline-flex items-center w-full hover:bg-blue-600 py-2 px-4 whitespace-nowrap">{item.name}{item.subMenu != null &&<IoMdArrowDropright />}</button>
+                        <button id={item.name} onClick={item.openModal?  ()=>setOpenModal(2):() => setOpenSubMenu(index)} className=" bg-white text-center inline-flex items-center w-full hover:bg-blue-600 py-2 px-4 whitespace-nowrap">{item.name}{item.subMenu != null &&<IoMdArrowDropright />}</button>
 
 
                         {item.subMenu != null &&
                             <ul className={`"py-1 text-sm left-full top-0 bg-white text-gray-700 dark:text-black absolute ${openSubMenu===index ? "block" : "hidden"}`}>
                                 {item.subMenu.map(subItem => (
-                                    <li>
+                                    <li key={subItem}>
                                         <button className="bg-white hover:bg-blue-600 hover:text-white py-2 px-4 block whitespace-nowrap">{subItem}</button>
                                     </li>
                                 ))}
